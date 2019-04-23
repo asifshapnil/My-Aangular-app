@@ -1,7 +1,9 @@
-<p>
-  posts works!
-  my post details <br>
-  <a [routerLink]="['post-details']">Posts Details</a> <br>
-  <router-outlet></router-outlet>
+<div class="card mb-5" *ngFor="let post of posts">
+      <div class="card-header">
+          <a [routerLink]="[post.id]"> {{ post.title|uppercase }} </a>
+      </div>
+      <div class="card-body">
+        {{ post.body }}
+      </div>
 
-</p>
+    </div>

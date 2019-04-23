@@ -1,3 +1,10 @@
-<p>
-  postdetails works!
-</p>
+
+    <div class="card bg-faded" *ngFor="let p of post">
+      <div class="card-header">
+        {{ p.title|uppercase }}
+      </div>
+      <div class="card-body">
+          {{ p.body }}
+      </div>
+    </div>
+
