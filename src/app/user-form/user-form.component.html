@@ -1,0 +1,76 @@
+<section>
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-4" *ngIf="user.name != '' ">
+           <h3 class="font-weight-bold">{{ user.name }}</h3>
+           <small *ngIf="user.username != '' && user.email != '' "> {{ user.username }} | {{ user.email }}</small>
+           <hr>
+           <h6 *ngIf="user.address.street != '' && user.address.city != '' && user.address.zipcode != '' " >{{ user.address.street }}, {{ user.address.city }}, {{ user.address.zipcode }}</h6>
+        </div>
+      <div class="col-12 col-md-8 col-lg-8 col-xl-8">
+        <div class="row">
+          <div class="col text-center">
+            <h1>User Registration</h1>
+            <p class="text-h3">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia. </p>
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col mt-4">
+            <input type="text" class="form-control" [(ngModel)]="user.name" placeholder="Name">
+          </div>
+        </div>
+        <div class="row align-items-center mt-4">
+          <div class="col">
+            <input type="text" class="form-control" [(ngModel)]="user.username" placeholder="User Name">
+          </div>
+        </div>
+        <div class="row align-items-center mt-4">
+          <div class="col">
+            <input type="email" class="form-control" [(ngModel)]="user.email" placeholder="email">
+          </div>
+        </div>
+        <div class="row align-items-center mt-4">
+          <div class="col">
+            <input type="text" class="form-control" [(ngModel)]="user.address.street" placeholder="Street">
+          </div>
+        </div>
+        <div class="row align-items-center mt-4">
+          <div class="col">
+            <input type="text" class="form-control" [(ngModel)]="user.address.suite" placeholder="Suite">
+          </div>
+        </div>
+        <div class="row align-items-center mt-4">
+          <div class="col">
+            <input type="text" class="form-control" [(ngModel)]="user.address.city" placeholder="City">
+          </div>
+        </div>
+        <div class="row align-items-center mt-4">
+          <div class="col">
+            <input type="number" class="form-control" [(ngModel)]="user.address.zipcode" placeholder="Zipcode">
+          </div>
+        </div>
+        <div class="row align-items-center mt-4">
+          <div class="col">
+            <input type="text" class="form-control" [(ngModel)]="user.address.geo.lat" placeholder="Lattitude">
+          </div>
+        </div>
+        <div class="row align-items-center mt-4">
+          <div class="col">
+            <input type="text" class="form-control" [(ngModel)]="user.address.geo.lng" placeholder="Longtitude">
+          </div>
+        </div>
+      </div>      
+    </div>
+
+    <div class="row justify-content-start mt-4">
+      <div class="col">
+        <div class="form-check">
+          <label class="form-check-label">
+            <input type="checkbox" class="form-check-input">
+            I Read and Accept <a href="https://www.froala.com">Terms and Conditions</a>
+          </label>
+        </div>
+
+        <button class="btn btn-primary mt-4">Submit</button>
+      </div>
+    </div>
+</section>
