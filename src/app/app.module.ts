@@ -1,3 +1,5 @@
+import { UserserviceService } from './userservice.service';
+import { TestUser } from './testUser';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -12,6 +14,8 @@ import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
+import { HttpClientModule } from '@angular/common/http';
+import { InMemoryDbService, InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 @NgModule({
   declarations: [
@@ -28,10 +32,12 @@ import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
     AppRoutingModule,
     ReactiveFormsModule,
     NgMultiSelectDropDownModule.forRoot(),
-    AngularDateTimePickerModule
+    AngularDateTimePickerModule,
+    HttpClientModule,
+    InMemoryWebApiModule.forRoot(TestUser)
 
   ],
-  providers: [],
+  providers: [UserserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
