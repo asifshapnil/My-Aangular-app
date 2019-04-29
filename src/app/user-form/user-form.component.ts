@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { UserserviceService } from '../userservice.service';
 
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
-  styleUrls: ['./user-form.component.css']
+  styleUrls: ['./user-form.component.css'],
+  providers: [UserserviceService]
 })
 export class UserFormComponent implements OnInit {
 
@@ -26,9 +28,15 @@ export class UserFormComponent implements OnInit {
     }
   }
 
-  constructor() { }
+
+
+  constructor(private _service: UserserviceService) { }
 
   ngOnInit() {
+  }
+
+  addData(){
+    this._service.users.push(this.user);
   }
 
 }

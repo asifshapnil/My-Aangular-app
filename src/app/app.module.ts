@@ -8,6 +8,10 @@ import { FormsModule } from '@angular/forms';
 import { PostdetailsComponent } from './postdetails/postdetails.component';
 import { UsersComponent } from './users/users.component';
 import { UserFormComponent } from './user-form/user-form.component';
+import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
 
 @NgModule({
   declarations: [
@@ -15,12 +19,16 @@ import { UserFormComponent } from './user-form/user-form.component';
     PostsComponent,
     PostdetailsComponent,
     UsersComponent,
-    UserFormComponent
+    UserFormComponent,
+    ReactiveFormComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    NgMultiSelectDropDownModule.forRoot(),
+    AngularDateTimePickerModule
 
   ],
   providers: [],

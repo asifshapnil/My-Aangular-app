@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UsersComponent } from './users/users.component';
 import { UserFormComponent } from './user-form/user-form.component';
+import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 
 const routes: Routes = [
   // { path: '', redirectTo: '/posts', pathMatch: 'full' },
@@ -17,7 +18,9 @@ const routes: Routes = [
   { path: 'users',
     children: [
       {path: '', component: UsersComponent},
-      {path: 'create', component: UserFormComponent}
+      {path: 'create', component: UserFormComponent},
+      {path: 'create-reactive', component: ReactiveFormComponent}
+
     ]
   }
 ];

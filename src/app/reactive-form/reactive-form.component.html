@@ -1,0 +1,102 @@
+<section>
+    <form [formGroup]='SignUp' (ngSubmit)="PostData()">
+
+  <div class="row justify-content-center">
+      <!-- <div class="col-12 col-md-4" *ngIf="user.name != '' ">
+         <h3 *ngIf="user.name != '' " class="font-weight-bold">{{ user.name }}</h3>
+         <small *ngIf="user.username != '' && user.email != '' "> {{ user.username }} | {{ user.email }}</small>
+         <hr>
+         <h6 *ngIf="user.address.street != '' && user.address.city != '' && user.address.zipcode != '' " >{{ user.address.street }}, {{ user.address.city }}, {{ user.address.zipcode }}</h6>
+      </div> -->
+    <div class="col-12 col-md-8 col-lg-8 col-xl-8">
+      <div class="row">
+        <div class="col text-center">
+          <h1>User Registration</h1>
+          <p class="text-h3">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia. </p>
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col mt-4">
+          <input type="text" class="form-control" formControlName="name" placeholder="Name">
+          <span *ngIf="SignUp.get('name').hasError('required')">
+            ** Name is required
+          </span>
+        </div>
+      </div>
+      <div class="row align-items-center mt-4">
+        <div class="col">
+          <input type="text" class="form-control" formControlName="username" placeholder="User Name">
+        </div>
+      </div>
+      <div class="row align-items-center mt-4">
+        <div class="col">
+          <input type="email" class="form-control" formControlName="email" placeholder="email">
+        </div>
+      </div>
+      <div class="row align-items-center mt-4">
+        <div class="col">
+          <input type="text" class="form-control" formControlName="street" placeholder="Street">
+        </div>
+      </div>
+      <div class="row align-items-center mt-4">
+        <div class="col">
+          <input type="text" class="form-control" formControlName="suite" placeholder="Suite">
+        </div>
+      </div>
+      <!-- <div class="row align-items-center mt-4">
+        <div class="col">
+          <select class="form-control" formControlName="city" id="">
+            <option *ngFor="let city of cities" value="">
+              {{ city.name }}
+            </option>
+          </select>
+        </div>
+      </div> -->
+      <div class="mt-4">
+          <ng-multiselect-dropdown
+          [placeholder]="'City'"
+          [data]="cities"
+          formControlName="city"
+          [settings]="dropdownSettings"
+          (onSelect)="onItemSelect($event)"
+          (onSelectAll)="onSelectAll($event)"
+          (onDeSelect)="onItemDeSelect($event)"
+        >
+        </ng-multiselect-dropdown>
+      </div>
+      <div class="mt-4">
+          <!-- <angular2-date-picker formControlName="date" [settings]="settings"></angular2-date-picker> -->
+      </div>
+      <div class="row align-items-center mt-4">
+        <div class="col">
+          <input type="number" class="form-control" formControlName="zipcode" placeholder="Zipcode">
+        </div>
+      </div>
+      <div class="row align-items-center mt-4">
+        <div class="col">
+          <input type="text" class="form-control" formControlName="lat" placeholder="Lattitude">
+        </div>
+      </div>
+      <div class="row align-items-center mt-4">
+        <div class="col">
+          <input type="text" class="form-control" formControlName="lng" placeholder="Longtitude">
+        </div>
+      </div>
+    </div>      
+  </div>
+
+  <div class="row justify-content-start mt-4">
+    <div class="col">
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input">
+          I Read and Accept <a href="https://www.froala.com">Terms and Conditions</a>
+        </label>
+      </div>
+
+      <button class="btn btn-primary mt-4" type="submit" >Submit</button>
+    </div>
+  </div>
+</form>
+
+</section>
