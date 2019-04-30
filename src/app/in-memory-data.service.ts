@@ -1,8 +1,12 @@
-import { InMemoryDbService } from 'angular-in-memory-web-api';
+import { Injectable } from '@angular/core';
+import {InMemoryDbService} from 'angular-in-memory-web-api';
 
-export class TestUser implements InMemoryDbService{
+@Injectable({
+  providedIn: 'root'
+})
+export class InMemoryDataService implements InMemoryDbService {
   createDb(){
-    let users = [
+    let usersList = [
       {
         "id": 1,
         "name": "Leanne Graham",
@@ -209,31 +213,11 @@ export class TestUser implements InMemoryDbService{
           "catchPhrase": "Switchable contextually-based project",
           "bs": "aggregate real-time technologies"
         }
-      },
-      {
-        "id": 10,
-        "name": "Clementina DuBuque",
-        "username": "Moriah.Stanton",
-        "email": "Rey.Padberg@karina.biz",
-        "address": {
-          "street": "Kattie Turnpike",
-          "suite": "Suite 198",
-          "city": "Lebsackbury",
-          "zipcode": "31428-2261",
-          "geo": {
-            "lat": "-38.2386",
-            "lng": "57.2232"
-          }
-        },
-        "phone": "024-648-3804",
-        "website": "ambrose.net",
-        "company": {
-          "name": "Hoeger LLC",
-          "catchPhrase": "Centralized empowering task-force",
-          "bs": "target end-to-end models"
-        }
       }
+
     ];
-    return {users:users};
+    return {usersList:usersList};
   }
+
+  constructor() { }
 }

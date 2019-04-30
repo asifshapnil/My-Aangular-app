@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, NgForm, Validators, MaxLengthValidator } from '@angular/forms';
 import { UserserviceService } from '../userservice.service';
+import { ActivatedRoute } from '@angular/router';
+import { FormGroup, FormControl, FormBuilder, NgForm, Validators, MaxLengthValidator } from '@angular/forms';
 
 @Component({
-  selector: 'app-reactive-form',
-  templateUrl: './reactive-form.component.html',
-  styleUrls: ['./reactive-form.component.css']
+  selector: 'app-show-user',
+  templateUrl: './show-user.component.html',
+  styleUrls: ['./show-user.component.css']
 })
-export class ReactiveFormComponent implements OnInit {
+export class ShowUserComponent implements OnInit {
+
+  id: any;
+  user:any;
 
   SignUp:FormGroup;
 
@@ -21,21 +25,24 @@ export class ReactiveFormComponent implements OnInit {
       closeOnSelect: false
   }
 
-  constructor(private formBuilder:FormBuilder, private _service: UserserviceService ) 
-  {
-    this.SignUp = formBuilder.group({
-      name: ['', Validators.required],
-      username:[''],
-      email:[''],
-      street:[''],
-      suite:[''],
-      city:[''],
-      zipcode:[''],
-      lat:[''],
-      lng:[''],
-      date:['']
-    });
-   }
+  constructor(private route: ActivatedRoute, private _service: UserserviceService, private formBuilder:FormBuilder)
+   {
+      this.SignUp = formBuilder.group({
+
+        name: ['', Validators.required],
+        username:[''],
+        email:[''],
+        street:[''],
+        suite:[''],
+        city:[''],
+        zipcode:[''],
+        lat:[''],
+        lng:[''],
+        date:['']
+
+
+      });
+    }
 
    disabled = false;
    ShowFilter = false;
@@ -47,6 +54,8 @@ export class ReactiveFormComponent implements OnInit {
    dropdownSettings: any = {};
 
   ngOnInit() {
+    this.id = this.route.snapshot.paramMap.get('id');
+
     this.cities = [
       { item_id: 1, item_text: 'Mumbai' },
       { item_id: 2, item_text: 'Bangaluru' },
@@ -66,10 +75,14 @@ export class ReactiveFormComponent implements OnInit {
       itemsShowLimit: 3,
       allowSearchFilter: true
     };
-
-    
-    
+    // alert(this.id);
+    this.getBooks();
   }
+
+  getBooks(){
+    this._service.singleUser(this.id).subscribe(usersList=>this.user=usersList);
+  }
+
   onItemSelect(item: any) {
     this.selectedItems.push(item);
   }
@@ -81,9 +94,7 @@ export class ReactiveFormComponent implements OnInit {
     this.selectedItems.splice(item, 1);
   }
   PostData(){
-      this._service.addUser(this.SignUp).subscribe();
+      this._service.updateUser(this.SignUp, this.id).subscribe();
   }
-
-  
 
 }

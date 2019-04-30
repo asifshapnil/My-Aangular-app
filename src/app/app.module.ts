@@ -1,5 +1,4 @@
 import { UserserviceService } from './userservice.service';
-import { TestUser } from './testUser';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -15,8 +14,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
 import { HttpClientModule } from '@angular/common/http';
-import { InMemoryDbService, InMemoryWebApiModule } from 'angular-in-memory-web-api';
-
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService }  from './in-memory-data.service';
+import { ShowUserComponent } from './show-user/show-user.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +24,8 @@ import { InMemoryDbService, InMemoryWebApiModule } from 'angular-in-memory-web-a
     PostdetailsComponent,
     UsersComponent,
     UserFormComponent,
-    ReactiveFormComponent
+    ReactiveFormComponent,
+    ShowUserComponent
   ],
   imports: [
     BrowserModule,
@@ -34,8 +35,9 @@ import { InMemoryDbService, InMemoryWebApiModule } from 'angular-in-memory-web-a
     NgMultiSelectDropDownModule.forRoot(),
     AngularDateTimePickerModule,
     HttpClientModule,
-    InMemoryWebApiModule.forRoot(TestUser)
-
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false }
+    )
   ],
   providers: [UserserviceService],
   bootstrap: [AppComponent]
