@@ -237,10 +237,9 @@ export class UserserviceService {
  }
 
  updateUser(body, id):Observable<any[]>{
-    console.log(body.value);
-    console.log(id);
+  debugger;
 
-    return this.http.put<any[]>(`${this.url}/${id}`, body.value);
+  return this.http.put<any[]>(`${this.url}/${id}`, body);
   }
 
 

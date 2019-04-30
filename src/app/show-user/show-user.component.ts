@@ -28,7 +28,7 @@ export class ShowUserComponent implements OnInit {
   constructor(private route: ActivatedRoute, private _service: UserserviceService, private formBuilder:FormBuilder)
    {
       this.SignUp = formBuilder.group({
-
+        id:[''],
         name: ['', Validators.required],
         username:[''],
         email:[''],
@@ -39,8 +39,6 @@ export class ShowUserComponent implements OnInit {
         lat:[''],
         lng:[''],
         date:['']
-
-
       });
     }
 
@@ -76,6 +74,10 @@ export class ShowUserComponent implements OnInit {
       allowSearchFilter: true
     };
     // alert(this.id);
+
+    // this.SignUp.setValue({
+    //   name:this.user.name
+    // });
     this.getBooks();
   }
 
@@ -94,7 +96,12 @@ export class ShowUserComponent implements OnInit {
     this.selectedItems.splice(item, 1);
   }
   PostData(){
-      this._service.updateUser(this.SignUp, this.id).subscribe();
+    console.log(this.SignUp.value);
+      this._service.updateUser(this.SignUp.value, this.id).subscribe();
+  }
+
+  setValue(){
+    alert('hello');
   }
 
 }
